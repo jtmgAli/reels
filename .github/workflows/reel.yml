@@ -2,8 +2,13 @@ name: Daily reel
 
 on:
   schedule:
-    - cron: "20 11 * * *"   # 11:20 UTC = 13:20 בשעון חורף בישראל, אחרי הפוסט של 12:47
-  workflow_dispatch: {}      # הפעלה ידנית מהלשונית Actions
+    - cron: "50 12 * * *"   # גיבוי בלבד: 14:50 בשעון חורף, אם ההפעלה מה-Worker לא עבדה
+  workflow_dispatch: {}      # הפעלה מה-Worker מיד אחרי הפוסט, או ידנית
+
+# רק הרצה אחת בכל פעם – מונע ריל כפול אם השעון וה-Worker מפעילים יחד
+concurrency:
+  group: reel
+  cancel-in-progress: false
 
 jobs:
   reel:
