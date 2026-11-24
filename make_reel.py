@@ -61,7 +61,7 @@ def download(url):
 
 def clean(text):
     # הסרת אימוג'ים וסימנים שהפונט לא מצייר; שמירת עברית, אנגלית, ספרות ופיסוק
-    text = re.sub(r"[^֐-׿A-Za-z0-9 .,!?%$:;'\"()\-–+/#]", "", text)
+    text = re.sub(r"[^\u0590-\u05FFA-Za-z0-9 .,!?%$:;'\"()\-–+/#]", "", text)
     return re.sub(r"\s+", " ", text).strip(" -–")
 
 
